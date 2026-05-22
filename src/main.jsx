@@ -5,11 +5,8 @@ import {
   BadgeCheck,
   BarChart3,
   Boxes,
-  Building2,
   Check,
-  ChevronRight,
   Factory,
-  Gauge,
   Handshake,
   Mail,
   MapPin,
@@ -20,7 +17,6 @@ import {
   Settings2,
   ShieldCheck,
   ShoppingBag,
-  Sparkles,
   Wind,
   X,
 } from 'lucide-react';
@@ -128,7 +124,7 @@ const specs = [
   ['Odor profile', '100% odorless from first use'],
   ['Treatment', 'Anti-bacterial and anti-fungal agents'],
   ['Custom sizing', 'Blueprint-based length, height and thickness'],
-  ['Flute angles', 'Adjustable from 45° to 60°'],
+  ['Flute angles', 'Adjustable from 45 degrees to 60 degrees'],
   ['Color options', 'Custom dyeing for OEM branding'],
   ['Use cases', 'OEM, industrial, agricultural and home replacement'],
   ['Support', 'Technical specification requests through Infocom'],
@@ -144,13 +140,19 @@ function useHashPage() {
   useEffect(() => {
     const onHash = () => setActivePage(getInitial());
     window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
+    window.addEventListener('popstate', onHash);
+    return () => {
+      window.removeEventListener('hashchange', onHash);
+      window.removeEventListener('popstate', onHash);
+    };
   }, []);
 
   const navigate = (id) => {
-    window.location.hash = id;
+    window.history.pushState(null, '', `#${id}`);
     setActivePage(id);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   };
 
   return [activePage, navigate];
@@ -487,7 +489,7 @@ function ProductsPage({ navigate }) {
             ['Distributor', 'To increase the spread of water, we can add distributors as well, which highly improves the effectiveness and efficiency. We can accomplish this without any supply chain bottlenecks or other troubles.'],
             ['Custom Dimensions', 'We manufacture to your specific blueprints, ensuring a perfect fit for zero assembly-line friction.'],
             ['Color Matching', "We offer custom dyeing to match your cooler's internal branding or aesthetics."],
-            ['Material Specs', 'We can adjust flute angles from 45° to 60° and heights based on your required air-pressure drop and saturation needs.'],
+            ['Material Specs', 'We can adjust flute angles from 45 degrees to 60 degrees and heights based on your required air-pressure drop and saturation needs.'],
           ].map(([title, text]) => (
             <article key={title}>
               <h3>{title}</h3>
