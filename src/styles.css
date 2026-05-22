@@ -670,13 +670,24 @@ p {
 
 .page-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.82fr);
-  gap: 42px;
+  grid-template-columns: minmax(0, 0.94fr) minmax(360px, 0.9fr);
+  gap: clamp(52px, 5vw, 78px);
   align-items: center;
   width: min(1220px, calc(100% - 32px));
   min-height: 620px;
   margin: 38px auto 0;
   padding: 64px 0;
+}
+
+.page-hero > div {
+  min-width: 0;
+}
+
+.page-hero h1 {
+  max-width: 100%;
+  font-size: clamp(48px, 5.35vw, 82px);
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .page-hero img {
