@@ -23,7 +23,7 @@ import {
 import './styles.css';
 
 const amazonLink = 'https://www.amazon.in/s?k=LILYCOOL+honeycomb+cooling+pad';
-const flipkartLink = 'https://www.flipkart.com/search?q=LILYCOOL%20honeycomb%20cooling%20pad';
+const flipkartLink = '#coming-soon';
 const pmcaLink = 'https://www.pmcagroup.com/';
 
 const pages = [
@@ -34,7 +34,7 @@ const pages = [
   { id: 'infrastructure', label: 'Infrastructure' },
   { id: 'specs', label: 'Specs & Data' },
 ];
-const routeIds = [...pages.map((page) => page.id), 'contact'];
+const routeIds = [...pages.map((page) => page.id), 'contact', 'coming-soon'];
 
 const media = {
   video: '/media/hero-honeycomb.mp4',
@@ -187,9 +187,9 @@ function Header({ activePage, navigate }) {
         <a href={amazonLink} target="_blank" rel="noreferrer">
           <ShoppingBag size={16} /> Amazon
         </a>
-        <a href={flipkartLink} target="_blank" rel="noreferrer">
+        <button type="button" onClick={() => go('coming-soon')}>
           <ShoppingBag size={16} /> Flipkart
-        </a>
+        </button>
         <button type="button" className="utility-contact" onClick={() => go('contact')}>
           <Phone size={16} /> Contact Us
         </button>
@@ -670,6 +670,26 @@ function ContactPage() {
   );
 }
 
+function ComingSoonPage({ navigate }) {
+  return (
+    <section className="section coming-soon-page" data-reveal>
+      <div className="coming-soon-mark">
+        <img src="/infocom-logo.png" alt="Infocom" />
+      </div>
+      <p className="section-kicker">Flipkart Store</p>
+      <h1>Coming Soon.</h1>
+      <p>
+        Our Flipkart storefront is being prepared with the same care as our cooling media. Until it goes live, you can
+        shop replacement pads on Amazon or speak with Infocom directly for bulk and custom requirements.
+      </p>
+      <ButtonRow>
+        <Button href={amazonLink}>Shop on Amazon</Button>
+        <Button onClick={() => navigate('contact')} variant="secondary">Contact Infocom</Button>
+      </ButtonRow>
+    </section>
+  );
+}
+
 function Footer({ navigate }) {
   return (
     <footer className="footer">
@@ -688,7 +708,7 @@ function Footer({ navigate }) {
       <div>
         <h3>Stores & Social</h3>
         <a href={amazonLink} target="_blank" rel="noreferrer">Amazon</a>
-        <a href={flipkartLink} target="_blank" rel="noreferrer">Flipkart</a>
+        <button type="button" onClick={() => navigate('coming-soon')}>Flipkart</button>
         <a href="mailto:lilycoolers@gmail.com">Email</a>
       </div>
     </footer>
@@ -706,6 +726,7 @@ function App() {
     if (activePage === 'infrastructure') return <InfrastructurePage navigate={navigate} />;
     if (activePage === 'specs') return <SpecsPage navigate={navigate} />;
     if (activePage === 'contact') return <ContactPage />;
+    if (activePage === 'coming-soon') return <ComingSoonPage navigate={navigate} />;
     return <HomePage navigate={navigate} />;
   }, [activePage, navigate]);
 
