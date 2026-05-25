@@ -49,6 +49,10 @@ const media = {
   range: '/media/cooling-pad-range.jpg',
   pair: '/media/cooling-pad-pair.jpg',
   frame: '/media/cooling-pad-frame.jpg',
+  factoryExterior: '/media/factory-exterior-blue.jpg',
+  factoryFloor: '/media/factory-production-floor.jpg',
+  factoryDispatch: '/media/factory-dispatch-pads.jpg',
+  factoryMap: '/media/factory-map-outline.png',
 };
 
 const contacts = [
@@ -179,6 +183,24 @@ const packagingHighlights = [
   [Printer, 'High-volume printing', 'Integrated packaging and print capability for branded, consistent supply at industrial scale.'],
   [Boxes, 'Packaging solutions', 'Corrugated, carton and packaging workflows available from the same Kota industrial premises.'],
   [PackageCheck, 'Single-campus coordination', 'Cooling media, packaging and dispatch planning can move together for smoother OEM supply runs.'],
+];
+
+const factoryPhotos = [
+  {
+    image: media.factoryExterior,
+    title: 'Factory exterior',
+    text: 'Blue-roofed production block and landscaped industrial campus in Kota.',
+  },
+  {
+    image: media.factoryFloor,
+    title: 'Production floor',
+    text: 'Large, clean manufacturing bay with pad processing equipment and staging zones.',
+  },
+  {
+    image: media.factoryDispatch,
+    title: 'Finished pad staging',
+    text: 'Honeycomb cooling pads and packed stock prepared for dispatch.',
+  },
 ];
 
 function useHashPage() {
@@ -659,8 +681,46 @@ function InfrastructurePage({ navigate }) {
       <PageHero
         title="Infrastructure for Scale, Consistency and Speed."
         subtitle="Operating out of Kota, Rajasthan, Infocom combines advanced resin-curing, paper-heating, corrugation and thermal-gluing workflows with practical quality gates."
-        image={media.texture}
+        image={media.factoryExterior}
       />
+      <section className="section factory-map-section" data-reveal>
+        <div>
+          <p className="section-kicker">Kota Industrial Campus</p>
+          <h2>Factory footprint mapped for scale.</h2>
+          <p>
+            The outlined satellite view shows the Infocom manufacturing premises inside the Indraprastha Industrial Area,
+            giving OEM partners a clear sense of the campus footprint behind our production, storage and dispatch
+            capability.
+          </p>
+        </div>
+        <figure className="factory-map-card">
+          <img src={media.factoryMap} alt="Satellite map outlining the Infocom factory premises" />
+          <figcaption>Outlined factory premises in Kota, Rajasthan</figcaption>
+        </figure>
+      </section>
+      <section className="section factory-gallery-section">
+        <div className="section-title" data-reveal>
+          <div>
+            <p className="section-kicker">Factory Photos</p>
+            <h2>Real production spaces, not stock visuals.</h2>
+          </div>
+          <p>
+            Exterior, production-floor and finished-pad staging views from the same operating premises used for
+            high-volume cooling pad supply.
+          </p>
+        </div>
+        <div className="factory-photo-grid">
+          {factoryPhotos.map((photo, index) => (
+            <article key={photo.title} data-reveal style={{ '--delay': `${index * 70}ms` }}>
+              <img src={photo.image} alt={photo.title} />
+              <div>
+                <h3>{photo.title}</h3>
+                <p>{photo.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="section infra-cards">
         {[
           [Factory, 'Kota Manufacturing Base', 'A production facility designed for bulk OEM and industrial cooling pad orders.'],
