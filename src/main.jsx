@@ -48,7 +48,9 @@ const media = {
   three: '/media/cooling-pad-three.jpg',
   range: '/media/cooling-pad-range.jpg',
   pair: '/media/cooling-pad-pair.jpg',
+  pair2: '/media/cooling-pad-pair-2.png',
   frame: '/media/cooling-pad-frame.jpg',
+  frame2: '/media/cooling-pad-frame-2.png',
   factoryExterior: '/media/factory-exterior-blue.jpg',
   factoryFloor: '/media/factory-production-floor.jpg',
   factoryDispatch: '/media/factory-dispatch-pads.jpg',
@@ -109,7 +111,7 @@ const productTiers = [
   {
     name: 'AC Deluxe',
     label: 'Mass-market excellence',
-    image: media.frame,
+    image: media.texture,
     headline: 'AC Deluxe: Market-Standard Excellence.',
     intro:
       "AC Deluxe is our answer to the competitive mass-market sector. We have refined our production process to deliver Infocom's signature manufacturing quality at an aggressive, scalable price point.",
@@ -395,7 +397,7 @@ function HomePage({ navigate }) {
       </section>
 
       <section className="section image-band" data-reveal>
-        <img src={media.pair} alt="Honeycomb cooling pads ready for manufacturing" />
+        <img src={media.pair2} alt="Honeycomb cooling pads ready for manufacturing" />
         <div>
           <p className="section-kicker">Supply Chain Strength</p>
           <h2>Massive Production Capacity for Unbroken Supply Chains.</h2>
@@ -656,7 +658,7 @@ function OEMPage({ navigate }) {
         </div>
       </section>
       <section className="section image-band" data-reveal>
-        <img src={media.frame} alt="Cooling pad with side support" />
+        <img src={media.frame2} alt="Cooling pad with side support" />
         <div>
           <h2>Industrial solutions without vendor bottlenecks.</h2>
           <p>

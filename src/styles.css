@@ -1398,6 +1398,7 @@ p {
   transform: translateY(24px);
   transition: opacity 640ms ease, transform 640ms ease;
   transition-delay: var(--delay, 0ms);
+  margin-bottom: 70px;
 }
 
 [data-reveal].is-visible {
