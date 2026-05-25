@@ -6,17 +6,22 @@ import {
   BarChart3,
   Boxes,
   Check,
+  Droplets,
   Factory,
+  Gauge,
   Handshake,
+  Layers3,
   Mail,
   MapPin,
   Menu,
   PackageCheck,
   Phone,
+  Printer,
   Ruler,
   Settings2,
   ShieldCheck,
   ShoppingBag,
+  ThermometerSun,
   Wind,
   X,
 } from 'lucide-react';
@@ -128,6 +133,52 @@ const specs = [
   ['Color options', 'Custom dyeing for OEM branding'],
   ['Use cases', 'OEM, industrial, agricultural and home replacement'],
   ['Support', 'Technical specification requests through Infocom'],
+];
+
+const scienceSteps = [
+  [
+    Droplets,
+    'The Process',
+    "Water flows steadily down the corrugated surface of the pad. Simultaneously, hot, dry air from outside is pulled through the pad by the cooler's blower motor.",
+  ],
+  [
+    Layers3,
+    'Geometric Precision',
+    'The unique, mathematically calibrated flute design of our honeycomb matrix forces the air to navigate a complex path. This drastically increases the surface area of water-to-air contact.',
+  ],
+  [
+    ThermometerSun,
+    'The Result',
+    'As the dry air passes through, the water evaporates, pulling the sensible heat out of the air. This highly efficient thermal exchange produces a continuous stream of incredibly cool, fresh air.',
+  ],
+];
+
+const woodWoolAdvantages = [
+  [
+    'Significantly Longer Operational Life',
+    "Wood wool degrades, compresses, and breaks down rapidly. Infocom's resin-cured cellulose matrix maintains its structural integrity season after season, offering a dramatically longer lifespan.",
+  ],
+  [
+    'Zero Sagging or Void Formation',
+    'As wood grass gets wet, it sags, creating large empty gaps where hot air bypasses the water entirely. Our rigid honeycomb geometry never sags, guaranteeing 100% consistent thermal efficiency across the entire surface area.',
+  ],
+  [
+    'Superior Hygiene & Air Quality',
+    'Wood wool is prone to rotting and releasing a foul "swamp" odor. Infocom pads are treated with advanced anti-bacterial and anti-fungal agents, remaining completely odorless and hygienic from day one.',
+  ],
+  [
+    'Lower Maintenance',
+    'Our fluted design acts as a natural particulate filter and is easily self-cleaning as water washes over it, whereas wood grass acts as a trap for dust, debris, and scaling.',
+  ],
+];
+
+const clientLogos = ['Bajaj', 'Voltas', 'Symphony', 'Havells', 'Crompton'];
+const certifications = ['ISO 9001:2008', 'RoHS'];
+
+const packagingHighlights = [
+  [Printer, 'High-volume printing', 'Integrated packaging and print capability for branded, consistent supply at industrial scale.'],
+  [Boxes, 'Packaging solutions', 'Corrugated, carton and packaging workflows available from the same Kota industrial premises.'],
+  [PackageCheck, 'Single-campus coordination', 'Cooling media, packaging and dispatch planning can move together for smoother OEM supply runs.'],
 ];
 
 function useHashPage() {
@@ -344,11 +395,7 @@ function HomePage({ navigate }) {
           We are proud to supply the core cooling technology for some of the largest and most respected names in the
           Indian air cooling industry including but not limited to Bajaj, Voltas, Crompton Greaves, Symphony etc.
         </p>
-        <div className="brand-cloud">
-          {['Bajaj', 'Voltas', 'Crompton Greaves', 'Symphony', 'OEM Partners'].map((brand) => (
-            <span key={brand}>{brand}</span>
-          ))}
-        </div>
+        <LogoCloud items={clientLogos} />
         <Button onClick={() => navigate('oem')} variant="outline">See Our OEM & Industrial Solutions</Button>
       </section>
 
@@ -366,6 +413,28 @@ function HomePage({ navigate }) {
           <Button href={amazonLink}>Buy on Amazon</Button>
           <Button href={flipkartLink} variant="secondary">Buy on Flipkart</Button>
         </ButtonRow>
+      </section>
+
+      <section className="section packaging-section" data-reveal>
+        <div>
+          <p className="section-kicker">Same Premises, Broader Industrial Capability</p>
+          <h2>Large Scale Packaging and Printing Solution.</h2>
+          <p>
+            Infocom is backed by a wider Kota-based industrial ecosystem that includes Ampi Packaging Pvt. Ltd.,
+            providing large-scale packaging and printing support from the same premises. For OEM partners, that means
+            cooling media supply, branded packaging coordination, and dispatch readiness can be planned as one production
+            conversation.
+          </p>
+        </div>
+        <div className="packaging-grid">
+          {packagingHighlights.map(([Icon, title, text]) => (
+            <article key={title}>
+              <Icon size={26} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="section final-cta" data-reveal>
@@ -575,6 +644,11 @@ function OEMPage({ navigate }) {
           <Button onClick={() => navigate('specs')} variant="outline">View Specs & Data</Button>
         </div>
       </section>
+      <section className="section client-section" data-reveal>
+        <p className="section-kicker">Our Clients</p>
+        <h2>Trusted by India's major cooling brands.</h2>
+        <LogoCloud items={clientLogos} className="client-logos" />
+      </section>
     </>
   );
 }
@@ -610,6 +684,79 @@ function InfrastructurePage({ navigate }) {
   );
 }
 
+function LogoCloud({ items, className = '' }) {
+  return (
+    <div className={`logo-cloud ${className}`}>
+      {items.map((item) => (
+        <span key={item}>{item}</span>
+      ))}
+    </div>
+  );
+}
+
+function PerformanceChart({ type }) {
+  const efficiency = type === 'efficiency';
+  const curves = efficiency
+    ? [
+        ['300 mm', 'M70 66 C 180 78, 330 91, 450 95', '#171012'],
+        ['200 mm', 'M70 86 C 175 100, 320 113, 450 124', '#2d2527'],
+        ['150 mm', 'M70 112 C 170 138, 315 161, 450 174', '#493538'],
+        ['100 mm', 'M70 149 C 170 180, 315 211, 450 223', '#720026'],
+        ['75 mm', 'M70 186 C 175 218, 315 250, 450 260', '#a7134a'],
+      ]
+    : [
+        ['300 mm', 'M70 260 C 170 220, 280 145, 450 54', '#171012'],
+        ['200 mm', 'M70 265 C 180 235, 305 175, 450 116', '#2d2527'],
+        ['150 mm', 'M70 270 C 190 245, 310 196, 450 150', '#493538'],
+        ['100 mm', 'M70 274 C 190 254, 305 230, 450 206', '#720026'],
+        ['75 mm', 'M70 277 C 200 263, 320 248, 450 234', '#a7134a'],
+      ];
+  const yLabel = efficiency ? '% Saturation Efficiency (%E)' : 'Pressure Drop (Pa)';
+  const xTicks = ['0.0', '1.0', '2.0', '3.0', '4.0', '5.0'];
+
+  return (
+    <figure className="performance-chart" data-reveal>
+      <svg viewBox="0 0 560 390" role="img" aria-label={efficiency ? 'Saturation efficiency versus face velocity chart' : 'Air pressure drop versus face velocity chart'}>
+        <rect x="0" y="0" width="560" height="390" rx="8" />
+        <g className="grid">
+          {Array.from({ length: 6 }, (_, index) => (
+            <line key={`v-${index}`} x1={70 + index * 80} x2={70 + index * 80} y1="54" y2="300" />
+          ))}
+          {Array.from({ length: 6 }, (_, index) => (
+            <line key={`h-${index}`} x1="70" x2="470" y1={54 + index * 49.2} y2={54 + index * 49.2} />
+          ))}
+        </g>
+        <line className="axis" x1="70" x2="470" y1="300" y2="300" />
+        <line className="axis" x1="70" x2="70" y1="54" y2="300" />
+        <text className="chart-title" x="70" y="34">{yLabel}</text>
+        <text className="axis-label" x="242" y="350">Air Face Velocity (m/s)</text>
+        {xTicks.map((tick, index) => (
+          <text key={tick} className="tick" x={70 + index * 80} y="323">{tick}</text>
+        ))}
+        {(efficiency ? ['100', '90', '80', '70', '60', '50'] : ['500', '400', '300', '200', '100', '0']).map((tick, index) => (
+          <text key={tick} className="tick ytick" x="54" y={60 + index * 49.2}>{tick}</text>
+        ))}
+        <g className="curve-area">
+          {curves.map(([label, d, color], index) => (
+            <g key={label}>
+              <path d={d} stroke={color} />
+              <text x="486" y={efficiency ? 72 + index * 42 : 62 + index * 54}>{label}</text>
+            </g>
+          ))}
+        </g>
+      </svg>
+      <figcaption>
+        <strong>{efficiency ? 'Saturation Efficiency vs. Face Velocity' : 'Air Pressure Drop vs. Face Velocity'}</strong>
+        <span>
+          {efficiency
+            ? "Even as the cooler's fan speed increases, Infocom pads maintain strong water saturation efficiency across product tiers."
+            : "The aerodynamic flute design creates minimal air resistance, helping blower motors avoid excess load and electricity consumption."}
+        </span>
+      </figcaption>
+    </figure>
+  );
+}
+
 function SpecsPage({ navigate }) {
   return (
     <>
@@ -636,6 +783,82 @@ function SpecsPage({ navigate }) {
           </p>
           <Button onClick={() => navigate('contact')}>Request Technical Specs</Button>
         </aside>
+      </section>
+      <section className="section science-section">
+        <div className="section-title" data-reveal>
+          <div>
+            <p className="section-kicker">The Science of Infocom Cooling</p>
+            <h2>How It Works: The Enthalpy of Vaporization.</h2>
+          </div>
+          <p>
+            Our honeycomb cooling pads operate on a fundamental thermodynamic principle: the enthalpy of vaporization.
+            By converting liquid water into water vapor, the system absorbs massive amounts of heat from the surrounding
+            air without requiring the heavy energy consumption of traditional refrigerants.
+          </p>
+        </div>
+        <div className="science-steps">
+          {scienceSteps.map(([Icon, title, text], index) => (
+            <article key={title} data-reveal style={{ '--delay': `${index * 70}ms` }}>
+              <Icon size={28} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+        <aside className="performance-output" data-reveal>
+          <Gauge size={30} />
+          <div>
+            <strong>Performance Output</strong>
+            <p>
+              Under standard operating conditions, Infocom cooling pads are engineered to easily achieve an ambient
+              temperature drop of 10°C to 20°C, delivering maximum thermal relief with minimal power consumption.
+            </p>
+          </div>
+        </aside>
+      </section>
+      <section className="section wood-wool-section" data-reveal>
+        <div>
+          <p className="section-kicker">Honeycomb Media vs. Wood Wool (Grass) Pads</p>
+          <h2>The Generational Upgrade in Cooling Technology.</h2>
+          <p>
+            Why industry leaders have permanently transitioned from traditional wood wool (aspen/grass) pads to Infocom
+            cellulose honeycomb media.
+          </p>
+        </div>
+        <div className="comparison-list">
+          {woodWoolAdvantages.map(([title, text]) => (
+            <article key={title}>
+              <Check size={19} />
+              <div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="section data-section">
+        <div className="section-title" data-reveal>
+          <div>
+            <p className="section-kicker">Section 4: The Efficiency Data</p>
+            <h2>Thermodynamic Performance Curves.</h2>
+          </div>
+          <p>
+            Two core data views for OEM engineers evaluating cooling efficiency, blower load, and airflow behavior at
+            different face velocities.
+          </p>
+        </div>
+        <div className="chart-grid">
+          <PerformanceChart type="efficiency" />
+          <PerformanceChart type="pressure" />
+        </div>
+      </section>
+      <section className="section certification-section" data-reveal>
+        <div>
+          <p className="section-kicker">Certifications</p>
+          <h2>Quality and compliance signals for OEM procurement.</h2>
+        </div>
+        <LogoCloud items={certifications} className="certification-logos" />
       </section>
       <QualitySection />
     </>

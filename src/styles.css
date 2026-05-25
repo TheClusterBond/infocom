@@ -384,7 +384,9 @@ p {
 .feature-grid,
 .tier-strip,
 .infra-cards,
-.quality > div {
+.quality > div,
+.science-steps,
+.packaging-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -395,6 +397,8 @@ p {
 .plain-card,
 .infra-cards article,
 .quality article,
+.science-steps article,
+.packaging-grid article,
 .contact-card,
 .spec-table,
 .spec-card {
@@ -408,6 +412,8 @@ p {
 .plain-card,
 .infra-cards article,
 .quality article,
+.science-steps article,
+.packaging-grid article,
 .spec-card {
   position: relative;
   overflow: hidden;
@@ -417,6 +423,8 @@ p {
 .feature-card::before,
 .plain-card::before,
 .infra-cards article::before,
+.science-steps article::before,
+.packaging-grid article::before,
 .spec-card::before {
   position: absolute;
   inset: 0;
@@ -430,6 +438,8 @@ p {
 .feature-card:hover,
 .plain-card:hover,
 .infra-cards article:hover,
+.science-steps article:hover,
+.packaging-grid article:hover,
 .spec-card:hover {
   transform: translateY(-6px);
   border-color: rgba(114, 0, 38, 0.28);
@@ -439,6 +449,8 @@ p {
 .feature-card:hover::before,
 .plain-card:hover::before,
 .infra-cards article:hover::before,
+.science-steps article:hover::before,
+.packaging-grid article:hover::before,
 .spec-card:hover::before {
   opacity: 1;
 }
@@ -450,6 +462,8 @@ p {
 
 .feature-card svg,
 .infra-cards svg,
+.science-steps svg,
+.packaging-grid svg,
 .quality svg,
 .spec-card svg {
   color: var(--maroon);
@@ -457,7 +471,9 @@ p {
 
 .feature-card h3,
 .quality h3,
-.infra-cards h3 {
+.infra-cards h3,
+.science-steps h3,
+.packaging-grid h3 {
   margin-top: 20px;
 }
 
@@ -465,6 +481,8 @@ p {
 .plain-card p,
 .infra-cards p,
 .quality p,
+.science-steps p,
+.packaging-grid p,
 .product-detail p,
 .custom-list p,
 .spec-card p {
@@ -587,7 +605,8 @@ p {
   margin: 22px auto 0;
 }
 
-.brand-cloud {
+.brand-cloud,
+.logo-cloud {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -596,6 +615,7 @@ p {
 }
 
 .brand-cloud span,
+.logo-cloud span,
 .application-list span {
   padding: 13px 16px;
   border: 1px solid var(--line);
@@ -607,6 +627,7 @@ p {
 }
 
 .brand-cloud span:hover,
+.logo-cloud span:hover,
 .application-list span:hover {
   transform: translateY(-3px);
   background: var(--maroon);
@@ -618,7 +639,9 @@ p {
 .final-cta,
 .legacy,
 .customization,
-.quality {
+.quality,
+.wood-wool-section,
+.certification-section {
   border-radius: var(--radius);
   background:
     linear-gradient(135deg, rgba(114, 0, 38, 0.94), rgba(167, 19, 74, 0.9)),
@@ -633,7 +656,9 @@ p {
 .retail-section::before,
 .final-cta::before,
 .legacy::before,
-.quality::before {
+.quality::before,
+.wood-wool-section::before,
+.certification-section::before {
   position: absolute;
   inset: -30% auto auto -10%;
   width: 320px;
@@ -656,7 +681,9 @@ p {
 .retail-section p,
 .final-cta p,
 .legacy p,
-.quality p {
+.quality p,
+.wood-wool-section p,
+.certification-section p {
   color: rgba(255, 255, 255, 0.78);
 }
 
@@ -801,6 +828,67 @@ p {
   color: #fff;
 }
 
+.packaging-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.packaging-section > div > p:not(.section-kicker),
+.science-section > .section-title p,
+.data-section > .section-title p {
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.packaging-grid {
+  grid-template-columns: 1fr;
+}
+
+.packaging-grid article,
+.science-steps article {
+  padding: 24px;
+}
+
+.client-section {
+  text-align: center;
+}
+
+.client-section h2 {
+  width: min(820px, 100%);
+  margin: 0 auto;
+}
+
+.logo-cloud span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 154px;
+  min-height: 70px;
+  padding: 12px 18px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+.client-logos span {
+  min-width: 172px;
+}
+
+.certification-logos {
+  justify-content: flex-end;
+  margin: 0;
+}
+
+.certification-logos span {
+  min-width: 180px;
+  color: var(--maroon);
+  background: #fff;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 950;
+}
+
 .oem-grid {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -867,6 +955,185 @@ p {
 .spec-card {
   align-self: start;
   padding: 32px;
+}
+
+.science-section {
+  padding-top: 38px;
+}
+
+.science-steps {
+  margin-top: 26px;
+}
+
+.performance-output {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  margin-top: 22px;
+  padding: 24px;
+  border: 1px solid rgba(11, 122, 120, 0.22);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(11, 122, 120, 0.1), rgba(255, 255, 255, 0.88));
+  box-shadow: 0 18px 46px rgba(57, 13, 27, 0.06);
+}
+
+.performance-output svg {
+  color: var(--teal);
+}
+
+.performance-output strong {
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.performance-output p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.wood-wool-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.wood-wool-section .section-kicker,
+.certification-section .section-kicker {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.comparison-list {
+  display: grid;
+  gap: 14px;
+}
+
+.comparison-list article {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.comparison-list svg {
+  color: #fff;
+}
+
+.comparison-list h3 {
+  color: #fff;
+  font-size: 19px;
+}
+
+.comparison-list p {
+  margin: 8px 0 0;
+}
+
+.data-section {
+  padding-top: 38px;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.performance-chart {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 18px 46px rgba(57, 13, 27, 0.08);
+}
+
+.performance-chart svg {
+  width: 100%;
+  height: auto;
+  background:
+    linear-gradient(90deg, rgba(114, 0, 38, 0.04), transparent 44%),
+    url('/media/honeycomb-texture.jpg') center/cover;
+}
+
+.performance-chart rect {
+  fill: rgba(255, 255, 255, 0.93);
+}
+
+.performance-chart .grid line {
+  stroke: rgba(23, 16, 18, 0.18);
+  stroke-width: 1.2;
+}
+
+.performance-chart .axis {
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.performance-chart path {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.performance-chart text {
+  fill: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.performance-chart .chart-title {
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.performance-chart .axis-label {
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.performance-chart .tick {
+  font-size: 13px;
+  font-weight: 850;
+  text-anchor: middle;
+}
+
+.performance-chart .ytick {
+  text-anchor: end;
+}
+
+.curve-area text {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.performance-chart figcaption {
+  display: grid;
+  gap: 8px;
+  padding: 22px;
+}
+
+.performance-chart figcaption strong {
+  font-size: 19px;
+}
+
+.performance-chart figcaption span {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.certification-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: center;
 }
 
 .contact-page {
@@ -1127,6 +1394,10 @@ p {
   .editorial-grid,
   .product-detail,
   .oem-grid,
+  .packaging-section,
+  .wood-wool-section,
+  .chart-grid,
+  .certification-section,
   .specs-layout,
   .contact-page,
   .retail-section,
@@ -1148,8 +1419,13 @@ p {
   .feature-grid,
   .tier-strip,
   .quality > div,
+  .science-steps,
   .infra-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .certification-logos {
+    justify-content: flex-start;
   }
 }
 
@@ -1225,6 +1501,8 @@ p {
   .tier-strip,
   .quality > div,
   .infra-cards,
+  .science-steps,
+  .packaging-grid,
   .custom-list {
     grid-template-columns: 1fr;
   }
@@ -1245,8 +1523,26 @@ p {
   .final-cta,
   .legacy,
   .customization,
-  .quality {
+  .quality,
+  .wood-wool-section,
+  .certification-section {
     padding: 28px;
+  }
+
+  .logo-cloud span,
+  .client-logos span,
+  .certification-logos span {
+    min-width: min(100%, 152px);
+    min-height: 58px;
+    font-size: 18px;
+  }
+
+  .performance-output {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-list article {
+    grid-template-columns: 1fr;
   }
 
   .retail-section {
