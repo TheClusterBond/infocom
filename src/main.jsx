@@ -58,8 +58,8 @@ const media = {
 };
 
 const contacts = [
-  { icon: Phone, label: 'Call', value: '+91 9414188530, 9314029303, 7014718031, 9887090308', href: 'tel:+919414188530' },
-  { icon: Mail, label: 'Email', value: 'lilycoolers@gmail.com', href: 'mailto:lilycoolers@gmail.com' },
+  { icon: Phone, label: 'Call', value: '+91 9314029303, 7014718031, 77425027777', href: 'tel:+919314029303' },
+  { icon: Mail, label: 'Email', value: 'infocomindia17@gmail.com', href: 'mailto:infocomindia17@gmail.com' },
   {
     icon: MapPin,
     label: 'Factory',
@@ -111,7 +111,7 @@ const productTiers = [
   {
     name: 'AC Deluxe',
     label: 'Mass-market excellence',
-    image: media.texture,
+    image: media.frame,
     headline: 'AC Deluxe: Market-Standard Excellence.',
     intro:
       "AC Deluxe is our answer to the competitive mass-market sector. We have refined our production process to deliver Infocom's signature manufacturing quality at an aggressive, scalable price point.",
@@ -994,7 +994,7 @@ function Footer({ navigate }) {
         <h3>Stores & Social</h3>
         <a href={amazonLink} target="_blank" rel="noreferrer">Amazon</a>
         <button type="button" onClick={() => navigate('coming-soon')}>Flipkart</button>
-        <a href="mailto:lilycoolers@gmail.com">Email</a>
+        <a href="mailto:infocomindia17@gmail.com">Email</a>
       </div>
     </footer>
   );
